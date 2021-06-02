@@ -1,0 +1,63 @@
+<Project>
+  <PropertyGroup Label="Settings">
+    <Deterministic>true</Deterministic>
+    <LangVersion>8.0</LangVersion>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>embedded</DebugType>
+    <MinVerSkip Condition="'$(Configuration)' == 'Debug'">true</MinVerSkip>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Deterministic Build" Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Package Information">
+    <Description>AppyWay Flurl Extensions</Description>
+    <Company>AppyWay</Company>
+    <Copyright>AppyWay</Copyright>
+    <Authors>Jorge Rodríguez Galán</Authors>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/YellowLineParking/Appy.Flurl</RepositoryUrl>
+    <PackageIcon>small-logo.png</PackageIcon>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>https://github.com/YellowLineParking/Appy.Flurl</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReleaseNotes>https://github.com/YellowLineParking/Appy.Flurl/releases</PackageReleaseNotes>
+    <PackageTags>NETCore;NET5;http;json;serializer</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Source Link">
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>
+
+  <ItemGroup Label="Package References">
+    <PackageReference Include="MinVer" PrivateAssets="All" Version="2.3.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" Version="1.0.0" />
+  </ItemGroup>
+
+  <PropertyGroup Label="Package Versions">
+	<FlurlHttpPackageVersion>2.4.2</FlurlHttpPackageVersion>	
+    <TunnelVisionLabsRefAssemblyAnnotatorPackageVersion>1.0.0-alpha.160</TunnelVisionLabsRefAssemblyAnnotatorPackageVersion>
+    <NullablePackageVersion>1.2.1</NullablePackageVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Test Package Versions">
+    <MartinCostelloLoggingXUnitPackageVersion>0.1.0</MartinCostelloLoggingXUnitPackageVersion>
+    <MicrosoftNETTestSdkPackageVersion>16.7.0</MicrosoftNETTestSdkPackageVersion>
+    <FluentAssertionsPackageVersion>5.10.3</FluentAssertionsPackageVersion>
+    <MoqPackageVersion>4.14.6</MoqPackageVersion>
+    <XunitPackageVersion>2.4.1</XunitPackageVersion>
+    <XunitRunnerVisualStudioPackageVersion>2.4.3</XunitRunnerVisualStudioPackageVersion>
+    <CoverletCollectorPackageVersion>1.3.0</CoverletCollectorPackageVersion>
+    <XunitXmlTestLoggerPackageVersion>2.1.26</XunitXmlTestLoggerPackageVersion>
+    <GitHubActionsTestLoggerPackageVersion>1.1.2</GitHubActionsTestLoggerPackageVersion>
+  </PropertyGroup>
+
+</Project>

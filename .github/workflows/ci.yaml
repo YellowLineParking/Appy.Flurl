@@ -1,0 +1,93 @@
+name: Continuous Integration
+on: pull_request
+
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
+
+jobs:
+  build-linux:
+    name: Build Linux
+    if: "!contains(github.event.head_commit.message, 'skip-ci')"
+    needs: [build-os]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Cache packages
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.NUGET_PACKAGES }}
+          key: ${{ runner.os }}-nuget-${{ hashFiles('.config/dotnet-tools.json', '**/packages.lock.json') }}
+          restore-keys: ${{ runner.os }}-nuget-
+
+      - name: Setup .NETCore 3.1.402
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.402
+
+      - name: Setup .NET 5.x
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.100
+
+      - name: Integration Tests
+        shell: bash
+        run: |
+          dotnet tool restore
+
+      - name: Build
+        shell: bash
+        run: |
+          dotnet tool restore
+          dotnet cake --target="Default"
+
+  build-os:
+    name: Build OS
+    if: "!contains(github.event.head_commit.message, 'skip-ci')"
+    strategy:
+      matrix:
+        kind: ['windows', 'macOS']
+        include:
+          - kind: windows
+            os: windows-latest
+          - kind: macOS
+            os: macos-latest
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Cache packages
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.NUGET_PACKAGES }}
+          key: ${{ runner.os }}-nuget-${{ hashFiles('.config/dotnet-tools.json', '**/packages.lock.json') }}
+          restore-keys: ${{ runner.os }}-nuget-
+
+      - name: Setup .NETCore 3.1.402
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.402
+
+      - name: Setup .NET 5.x
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.100
+
+      - name: Integration Tests
+        shell: bash
+        run: |
+          dotnet tool restore
+
+      - name: Build
+        shell: bash
+        run: |
+          dotnet tool restore
+          dotnet cake
