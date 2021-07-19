@@ -43,7 +43,7 @@
   </ItemGroup>
 
   <PropertyGroup Label="Package Versions">
-	<FlurlHttpPackageVersion>2.4.2</FlurlHttpPackageVersion>	
+	  <FlurlHttpPackageVersion>3.2.0</FlurlHttpPackageVersion>
     <TunnelVisionLabsRefAssemblyAnnotatorPackageVersion>1.0.0-alpha.160</TunnelVisionLabsRefAssemblyAnnotatorPackageVersion>
     <NullablePackageVersion>1.2.1</NullablePackageVersion>
   </PropertyGroup>
