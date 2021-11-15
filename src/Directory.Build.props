@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup Label="Settings">
     <Deterministic>true</Deterministic>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>latest</LangVersion>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>embedded</DebugType>
     <MinVerSkip Condition="'$(Configuration)' == 'Debug'">true</MinVerSkip>
@@ -24,7 +24,7 @@
     <PackageProjectUrl>https://github.com/YellowLineParking/Appy.Flurl</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReleaseNotes>https://github.com/YellowLineParking/Appy.Flurl/releases</PackageReleaseNotes>
-    <PackageTags>NETCore;NET5;http;json;serializer</PackageTags>
+    <PackageTags>NET6;NET5;NETCore;http;json;serializer</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -43,7 +43,7 @@
   </ItemGroup>
 
   <PropertyGroup Label="Package Versions">
-	<FlurlHttpPackageVersion>2.4.2</FlurlHttpPackageVersion>	
+    <FlurlHttpPackageVersion>2.4.2</FlurlHttpPackageVersion>
     <TunnelVisionLabsRefAssemblyAnnotatorPackageVersion>1.0.0-alpha.160</TunnelVisionLabsRefAssemblyAnnotatorPackageVersion>
     <NullablePackageVersion>1.2.1</NullablePackageVersion>
   </PropertyGroup>
